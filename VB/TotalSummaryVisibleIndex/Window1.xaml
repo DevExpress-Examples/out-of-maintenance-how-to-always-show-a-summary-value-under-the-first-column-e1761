@@ -1,0 +1,17 @@
+﻿<Window x:Class="TotalSummaryVisibleIndex.Window1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib" Title="Window1" Height="300" Width="500">
+    <Window.Resources>
+        <dxg:TableView x:Key="view" x:Name="view" AutoWidth="True" ShowTotalSummary="True" IsTotalSummaryMenuEnabled="False" />
+    </Window.Resources>
+    <Grid>
+        <dxg:GridControl Name="grid" View="{StaticResource view}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Category" Width="200" />
+                <dxg:GridColumn FieldName="Name" Width="200" />
+                <dxg:GridColumn FieldName="Hyperlink" Width="200" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem x:Name="summary" FieldName="{Binding VisibleColumns[0].FieldName, Source={StaticResource view}}" SummaryType="Count" />
+            </dxg:GridControl.TotalSummary>
+        </dxg:GridControl>
+    </Grid>
+</Window>
